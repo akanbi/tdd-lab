@@ -12,16 +12,18 @@ class FizzBuzz {
     }
 
     private fun buildResult(multiplier: Int): String {
-        var result = ""
+        val result = StringBuilder()
         if (isMultiplierByThree(multiplier))
-            result += "fizz"
+            result.append("fizz")
         if (isMultiplierByFive(multiplier)) {
-            result += "buzz"
+            result.append("buzz")
         }
-        return when {
-            result.isBlank() -> multiplier.toString()
-            else -> result
-        }
+        return formatResult(result, multiplier)
+    }
+
+    private fun formatResult(result: StringBuilder, multiplier: Int): String = when {
+        result.isBlank() -> multiplier.toString()
+        else -> result.toString()
     }
 
     private fun isMultiplierNegative(multiplier: Int) = multiplier < 0
